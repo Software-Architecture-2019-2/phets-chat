@@ -1,0 +1,9 @@
+version: "2.1"
+services:
+  nodejs:
+    build: .
+    ports:
+      - "3000:3000"
+    image: nodejs
+    container_name: nodejs
+    restart: unless-stopped
