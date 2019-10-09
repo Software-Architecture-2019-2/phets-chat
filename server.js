@@ -16,7 +16,7 @@ app.use(express.json());
 // For routes
 app.use('/messages',message)
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4002;
 const server = app.listen(PORT, () => {
   console.log(`Listening on PORT: ${PORT}`);
 });
