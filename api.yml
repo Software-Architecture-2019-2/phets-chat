@@ -6,7 +6,7 @@ info:
   license:
     name: Software Architecture, 2019-II
 host: localhost:4002
-basePath: /sa-ms-chat/resources
+basePath: /
 schemes:
   - http
 consumes:
@@ -19,10 +19,10 @@ paths:
       summary: Creates a new message
       operationId: createMessage
       parameters:
-        - name: user
+        - name: message
           in: body
           required: true
-          description: User Object
+          description: Message Object
           schema:
             $ref: '#/definitions/Message'
       responses:
