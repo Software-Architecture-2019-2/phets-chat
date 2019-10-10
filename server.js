@@ -7,7 +7,7 @@ const message = require('./routes/message')
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send('Hello world\n');
+  res.send('Hello Phets =)\n');
 });
 
 //For middlewares
