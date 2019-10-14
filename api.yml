@@ -1,3 +1,5 @@
+#Test with: http://editor.swagger.io/
+
 swagger: '2.0'
 info:
   version: 1.0.0
@@ -6,7 +8,7 @@ info:
   license:
     name: Software Architecture, 2019-II
 host: localhost:4002
-basePath: /sa-ms-chat/resources
+basePath: /
 schemes:
   - http
 consumes:
@@ -19,14 +21,14 @@ paths:
       summary: Creates a new message
       operationId: createMessage
       parameters:
-        - name: user
+        - name: message
           in: body
           required: true
-          description: User Object
+          description: Message Object
           schema:
             $ref: '#/definitions/Message'
       responses:
-        '201':
+        '200':
           description: Send
         '400':
           description: Bad Request
@@ -37,8 +39,53 @@ paths:
           schema:
             $ref: '#/definitions/ErrorModel'
 
-definitions:
+  /messages/conversation:
+    delete:
+      summary: Delete a conversation
+      operationId: deleteConversation
+      parameters:
+        - name: conversation
+          in: body
+          description: The conversation emails to be deleted
+          required: true
+          schema:
+            $ref: '#/definitions/Conversation'
+      responses:
+        '201':
+          description: Conversation deleted
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
 
+  /messages/notifications:
+    delete:
+      summary: Delete a notifications
+      operationId: deleteNotifications
+      parameters:
+        - name: notification
+          in: body
+          description: The message notifications to be deleted
+          required: true
+          schema:
+            $ref: '#/definitions/Notification'
+      responses:
+        '201':
+          description: Notification deleted
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+definitions:
   # Messages
   Message:
     type: object
@@ -55,6 +102,36 @@ definitions:
           received:
             type: string
           content:
+            type: string
+
+  # Conversation
+  Conversation:
+    type: object
+    properties:
+      conversation:
+        type: object
+        required:
+          - sent
+          - received
+        properties:
+          sent:
+            type: string
+          received:
+            type: string
+  
+  # Notification
+  Notification:
+    type: object
+    properties:
+      notification:
+        type: object
+        required:
+          - sent
+          - received
+        properties:
+          sent:
+            type: string
+          received:
             type: string
 
   # Errors
