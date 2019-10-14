@@ -51,7 +51,7 @@ paths:
           schema:
             $ref: '#/definitions/Conversation'
       responses:
-        '201':
+        '200':
           description: Conversation deleted
         '400':
           description: Bad Request
@@ -74,7 +74,7 @@ paths:
           schema:
             $ref: '#/definitions/Notification'
       responses:
-        '201':
+        '200':
           description: Notification deleted
         '400':
           description: Bad Request
