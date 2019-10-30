@@ -3,8 +3,9 @@ const Joi = require('joi');
 
 const create = async (req, res,next) => {
   try {
-    req.sentEmail = req.body.sent
-    req.receivedEmail = req.body.received
+    req.sent = req.body.sent
+    req.received = req.body.received
+    req.adopt = req.body.adopt
     next()
   } catch (err) {
     return response.error(res,500,'Unexpected error')
@@ -13,8 +14,8 @@ const create = async (req, res,next) => {
 
 const deleteCollection = async (req, res, next) => {
   try {
-    req.sentEmail = req.body.sent
-    req.receivedEmail = req.body.received
+    req.sent = req.body.sent
+    req.received = req.body.received
     next()
   } catch (err) {
     return response.error(res, 500, 'Unexpected error')
@@ -25,8 +26,9 @@ const deleteCollection = async (req, res, next) => {
 const createValidator = (data) => {
   const schema = {
     content: Joi.string().required().min(0).max(1500),
-    received: Joi.string().email().required(),
-    sent: Joi.string().email().required()
+    received: Joi.string().required(),
+    sent: Joi.string().required(),
+    adopt: Joi.boolean().required(),
   }
   return Joi.validate(data,schema);
 }

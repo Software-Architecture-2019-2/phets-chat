@@ -11,7 +11,8 @@ router.post(
   validator(message.createValidator, "message", [
     "content",
     "received",
-    "sent"
+    "sent",
+    "adopt"
   ]),
   message.create,
   firebaseChat.sendMessage

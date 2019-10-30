@@ -96,6 +96,7 @@ definitions:
           - sent
           - received
           - content
+          - adopt
         properties:
           sent:
             type: string
@@ -103,6 +104,8 @@ definitions:
             type: string
           content:
             type: string
+          adopt:
+            type: boolean
 
   # Conversation
   Conversation:
