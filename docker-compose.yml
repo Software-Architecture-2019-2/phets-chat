@@ -1,9 +1,8 @@
 version: "2.1"
 services:
-  nodejs:
+  phets-chat-ms:
+    container_name: phets-chat-ms
     build: .
     ports:
       - "4002:4002"
-    image: nodejs
-    container_name: nodejs
     restart: unless-stopped

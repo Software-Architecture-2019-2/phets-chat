@@ -35,8 +35,8 @@ const createValidator = (data) => {
 
 const deleteCollectionValidator = (data) => {
   const schema = {
-    received: Joi.string().email().required(),
-    sent: Joi.string().email().required()
+    received: Joi.string().required(),
+    sent: Joi.string().required()
   }
   return Joi.validate(data,schema);
 }
